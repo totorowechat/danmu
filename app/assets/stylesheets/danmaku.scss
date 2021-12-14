@@ -1,0 +1,135 @@
+// Place all the styles related to the Danmaku controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* universal */
+
+body {
+    margin: 0;
+    background-color: #f1f1f1;
+}
+
+h1,h2,h3,h4{
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    border-radius: 9999px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    &.blue {
+	color: white;
+	font-weight: 500;
+	background-color: rgb(59,130,246);
+	
+    }
+
+    &.blue:hover {
+	background-color: rgb(29,78,216);
+	
+    }
+}
+
+input {
+    appearance: none;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+
+    &:focus {
+	border: 1px solid rgb(59,130,246);
+	border-color: rgb(59,130,246);
+    }
+}
+
+/* header */
+
+/* nav */
+
+.nav {
+    display: flex;
+    background-color: #f8f8f8;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Sans-Serif;
+    
+    .title {
+	font-weight: 600;
+	font-size: 1.25rem;
+	letter-spacing: -0.025em;
+	color: #FE2EC8;
+	
+	a:visited { 
+	    color:  #FE2EC8;
+	}
+    }
+
+    .item {
+	color: #718096;
+	// border-color: #000;
+	// border-radius: 10px;
+	// border: 1px solid;
+	padding-left: 0.8rem;
+	padding-right: 0.8rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	background-color: rgb(226, 232, 240);
+	a:visited { 
+	    color: #718096;
+	}
+
+	
+    }
+    .item:hover{
+	background-color: rgb(203, 213, 225);
+    }
+
+    .mr-4{
+	margin-right: 10px;
+    }
+
+    
+}
+
+
+/* main */
+
+.main {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+	font-family: sans-serif;
+	font-size: 3rem;
+    }
+    
+    &>div {
+	max-width: 1260px;
+	width: 80%;
+	background-color: #f8f8f8;
+	max-width: 1060px;
+	margin: 1rem;
+	padding: 1rem;
+	border-radius: 0.5rem;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    }
+}
+
+.content {
+    max-width: 1260px;
+    width: 80%;
+    background-color: #f8f8f8;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}

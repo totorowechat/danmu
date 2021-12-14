@@ -1,0 +1,42 @@
+<%= form_with(model: video_item) do |form| %>
+  <% if video_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(video_item.errors.count, "error") %> prohibited this video_item from being saved:</h2>
+
+      <ul>
+        <% video_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :site %>
+    <%= form.text_field :site %>
+  </div>
+
+  <div class="field">
+    <%= form.label :streams %>
+    <%= form.text_field :streams %>
+  </div>
+
+  <div class="field">
+    <%= form.label :extra %>
+    <%= form.text_field :extra %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

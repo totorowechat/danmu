@@ -1,0 +1,2 @@
+class VideoItem < ApplicationRecord
+end
