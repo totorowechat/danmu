@@ -4,19 +4,23 @@ class VideoItemsController < ApplicationController
   # GET /video_items or /video_items.json
   def index
     @video_items = VideoItem.all
+    render :layout => false
   end
 
   # GET /video_items/1 or /video_items/1.json
   def show
+    render :layout => false
   end
 
   # GET /video_items/new
   def new
     @video_item = VideoItem.new
+    render :layout => false
   end
 
   # GET /video_items/1/edit
   def edit
+    render :layout => false
   end
 
   # POST /video_items or /video_items.json
