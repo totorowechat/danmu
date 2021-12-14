@@ -4,12 +4,11 @@
 <div class="main">
   <div>
     <h1 class="">Danmaku#download</h1>
-    <form>
-      <input type="text" class="" id="video"
-	     style="width: 300px;"
-	     placeholder="bilibili video url or bv">
-      <button type="submit" class="blue">SUBMIT</button>
-    </form>
+
+    <%= form_with url: danmaku_get_video_info_path, method: :post do |form| %>
+      <%= form.text_field :query, placeholder: 'bilibili video url or bv', required: true %>
+      <%= form.submit "Search", class: 'blue' %>
+    <% end %>
   </div>
   
 </div>

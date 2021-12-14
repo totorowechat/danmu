@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'examples', to: 'static_pages#examples'
   
   root 'danmaku#download'
+  post '/danmaku/get_video_info', to: 'danmaku#get_video_info'
 
   resources :video_items
 
