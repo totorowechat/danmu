@@ -3,6 +3,7 @@ class DanmakuController < ApplicationController
   end
 
   def get_video_info
-    render html: '<div>html goes here</div>'.html_safe
+    json = VideoItemCreator.new(params["query"]).get_info
+    render html: "#{json}".html_safe
   end
 end
