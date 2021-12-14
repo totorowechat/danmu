@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_085140) do
+ActiveRecord::Schema.define(version: 2021_12_14_185220) do
+
+  create_table "search_histories", force: :cascade do |t|
+    t.integer "video_item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["video_item_id"], name: "index_search_histories_on_video_item_id"
+  end
 
   create_table "video_items", force: :cascade do |t|
     t.string "title"
@@ -22,4 +29,5 @@ ActiveRecord::Schema.define(version: 2021_12_14_085140) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "search_histories", "video_items"
 end
