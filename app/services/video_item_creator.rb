@@ -1,6 +1,8 @@
 require 'net/http'
+require 'json'
 
 class VideoItemCreator
+  attr_reader :bvid, :aid, :info
   def initialize bvid
     @bvid = bvid
     @aid = bvid2aid bvid
@@ -36,7 +38,9 @@ class VideoItemCreator
     uri.query = URI.encode_www_form(params)
     begin
       res = Net::HTTP.get_response(uri)
-      return res.body
+      json = JSON.parse(res.body)
+      @info = json
+      return @info
     rescue StandardError
       return false
     end

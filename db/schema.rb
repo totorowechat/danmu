@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_14_185220) do
+ActiveRecord::Schema.define(version: 2021_12_14_205644) do
 
   create_table "search_histories", force: :cascade do |t|
     t.integer "video_item_id", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_12_14_185220) do
     t.string "extra"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "pic"
   end
 
   add_foreign_key "search_histories", "video_items"
