@@ -14,9 +14,9 @@ class DanmakuController < ApplicationController
       bvid = params["query"]
     end
 
-    bvid = /BV[0-9a-zA-Z]+/.match(params["query"])
+    bvid = /BV[0-9a-zA-Z]+/.match(params["query"]).to_s
 
-    if !bvid then
+    if bvid.empty? then
       respond_to do |format|
         format.html { render html: "bvid not valid", status: :unprocessable_entity }
         format.json { render json: @video_item.errors, status: :unprocessable_entity }
@@ -26,8 +26,9 @@ class DanmakuController < ApplicationController
       @video_item = VideoItem.find_by url: "https://www.bilibili.com/#{bvid}"
 
       if @video_item.nil? then
+        create_video_item(bvid)
         respond_to do |format|
-          if create_video_item(bvid).save
+          if @video_item.save
             format.html { redirect_to @video_item, notice: "Video item was successfully created." }
             format.json { render :show, status: :created, location: @video_item }
           else
