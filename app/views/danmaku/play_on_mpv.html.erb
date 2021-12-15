@@ -4,11 +4,9 @@
     <h1 class="">Play on mpv</h1>
     <hr />
     <div style="align-self: flex-start; overflow-wrap: break-word; width: 100%;">
-
-      mpv '<%= @video_url%>' \
-      --audio-file='<%= @audio_url%>' \
+      mpv '<%= @video_url%>'
+      --audio-file='<%= @audio_url%>'
       --referrer='https://www.bilibili.com' --no-ytdl
-
     </div>
     
     
