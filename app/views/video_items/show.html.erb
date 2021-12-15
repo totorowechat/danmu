@@ -1,29 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="main">
+  <div>
+    <h1 class="">Video Info</h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @video_item.title %>
-</p>
+    <hr />
+    
+    <table class="video_info">
+      <p id="notice"><%= notice %></p>
+      <thead>
+	<tr>
+	  <th>Key</th>
+	  <th>Value</th>
+	</tr>
+      </thead>
 
-<p>
-  <strong>Url:</strong>
-  <%= @video_item.url %>
-</p>
+      <tbody>
+	<tr>
+          <td>Title</td>
+	  <td><%= @video_item.title %></td>
+	</tr>
+	<tr>
+          <td>Image </td>
+	  <td><%= image_tag @video_item.pic, height: 300, referrerpolicy: 'no-referrer' %></td>
+	</tr>
+	<tr>
+          <td>Link </td>
+	  <td><%= @video_item.url %></td>
+	</tr>
+	<tr>
+          <td>Site </td>
+	  <td><%= @video_item.site %></td>
+	</tr>
+	<tr>
+          <td>Streams </td>
+	  <td>
+	    <p>
+	      <%= @video_item.streams %>
+	    </p>
+	  </td>
+	</tr>
+	<tr>
+          <td>extra </td>
+	  <td>
+	    <p><%= @video_item.extra %></p>
+	  </td>
+	</tr>
 
-<p>
-  <strong>Site:</strong>
-  <%= @video_item.site %>
-</p>
+      </tbody>
+    </table>
 
-<p>
-  <strong>Streams:</strong>
-  <%= @video_item.streams %>
-</p>
+    <!-- <div> -->
+    <!--   <%= link_to 'Edit', edit_video_item_path(@video_item), class: 'button blue', style: 'width: 2rem;' %> -->
+    <!--   <%= link_to 'Back', video_items_path, class: 'button gray', style: 'width: 2rem;' %> -->
+    <!-- </div> -->
+    
 
-<p>
-  <strong>Extra:</strong>
-  <%= @video_item.extra %>
-</p>
-
-<%= link_to 'Edit', edit_video_item_path(@video_item) %> |
-<%= link_to 'Back', video_items_path %>
+  </div>
+</div>

@@ -17,7 +17,9 @@ a {
     text-decoration: none;
 }
 
-button, input[type=submit] {
+button, input[type=submit], a.button {
+    display: inline-block;
+    text-align: center;
     border: none;
     border-radius: 9999px;
     padding: 0.5rem 1rem 0.5rem 1rem;
@@ -30,6 +32,30 @@ button, input[type=submit] {
 
     &.blue:hover {
 	background-color: rgb(29,78,216);
+	
+    }
+
+    &.gray {
+	color: white;
+	font-weight: 500;
+	background-color: #718096;
+	
+    }
+
+    &.gray:hover {
+	background-color: #718096;
+	
+    }
+
+    &.red {
+	color: white;
+	font-weight: 500;
+	background-color: rgb(251,113,133);
+	
+    }
+
+    &.red:hover {
+	background-color: rgb(190,18,60);
 	
     }
 }
@@ -136,4 +162,29 @@ input {
     hr {
 	opacity: 0.3;
     }
+}
+
+
+/* video info */
+
+table.video_info {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+    td:first-child {
+	width: 3rem;
+    }
+
+    td:last-child {
+	width: 14rem;
+    }
+
+    p {
+	text-align: left;
+	max-width: 600px;
+	word-wrap:break-word;
+	margin: 0 auto;
+    }
+	  
 }

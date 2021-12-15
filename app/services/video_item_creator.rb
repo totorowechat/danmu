@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 
 class VideoItemCreator
-  attr_reader :bvid, :aid, :info
+  attr_reader :bvid, :aid, :info, :playurl
   def initialize bvid
     @bvid = bvid
     @aid = bvid2aid bvid
@@ -39,10 +39,44 @@ class VideoItemCreator
     begin
       res = Net::HTTP.get_response(uri)
       json = JSON.parse(res.body)
-      @info = json
+      @info = json["data"]
       return @info
     rescue StandardError
       return false
     end
   end
+
+  def get_page_id_by_index page_index
+    pages = @info["pages"]
+    page = pages[page_index]
+    page["cid"]
+  end
+
+  def get_download_url page_index = nil, cid = nil
+    cid = get_page_id_by_index page_index if cid.nil?
+    
+    uri = URI.parse("https://api.bilibili.com/x/player/playurl")
+
+    params = {
+      :avid => @aid,
+      :cid => cid,
+      :qn => 120,
+      :otype => "json",
+      :fnval => 16,
+      :fourk => 1
+    }
+
+    uri.query = URI.encode_www_form params
+    
+    begin
+      res = Net::HTTP.get_response(uri)
+      json = JSON.parse(res.body)
+      @playurl = json["data"]
+      return @playurl
+    rescue StandardError
+      return "get_download_url: network error"
+    end
+    
+  end
+  
 end

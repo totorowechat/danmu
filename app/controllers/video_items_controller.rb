@@ -3,13 +3,18 @@ class VideoItemsController < ApplicationController
 
   # GET /video_items or /video_items.json
   def index
-    @video_items = VideoItem.all
-    render :layout => false
+    page = (params["page"] || 0).to_i
+    page_size = (params["page_size"] || 10).to_i
+    page = 0 if page < 0
+    page_size = 100 if page_size > 100
+    @video_items = VideoItem.all.offset(page * page_size).limit(page_size)
+    @params = params
+    @is_first = !page.zero?
+    @is_end = !VideoItem.all.offset((page + 1) * page_size).limit(page_size).size.zero?
   end
 
   # GET /video_items/1 or /video_items/1.json
   def show
-    render :layout => false
   end
 
   # GET /video_items/new

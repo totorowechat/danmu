@@ -1,35 +1,60 @@
 <p id="notice"><%= notice %></p>
+<div class="main">
+  <div>
+    
+    <h1>Video Items</h1>
 
-<h1>Video Items</h1>
+    <hr />
+    <table class="video_info">
+      <thead>
+	<tr>
+	  <th>Title</th>
+	  <th>Image</th>
+	  <th>Bvid</th>
+	  <th>Site</th>
+	  <th></th>
+	</tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Site</th>
-      <th>Streams</th>
-      <th>Extra</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+	<% @video_items.each do |video_item| %>
+	<tr>
+          <td><%= video_item.title %></td>
+	  <td><%= image_tag video_item.pic || "",
+		  height: 100, referrerpolicy: 'no-referrer' %></td>
+          <td>
+	    <a href=<%= video_item.url %>>
+	      <%= video_item.url.split("/").last %>
+	    </a>
+	    </td>
+          <td><%= video_item.site %></td>
+          <td>
+	    <%= link_to 'Show', video_item, class: "button blue" %>
+            <%= link_to 'Edit', edit_video_item_path(video_item), class: "button gray" %>
+            <%= link_to 'Destroy', video_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "button red" %>
+	  </td>
+	</tr>
+	<% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @video_items.each do |video_item| %>
-      <tr>
-        <td><%= video_item.title %></td>
-        <td><%= video_item.url %></td>
-        <td><%= video_item.site %></td>
-        <td><%= video_item.streams %></td>
-        <td><%= video_item.extra %></td>
-        <td><%= link_to 'Show', video_item %></td>
-        <td><%= link_to 'Edit', edit_video_item_path(video_item) %></td>
-        <td><%= link_to 'Destroy', video_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Video Item', new_video_item_path %>
+    <br>
+    <!-- <%= link_to 'New Video Item', new_video_item_path %> -->
+    <div>
+      <% if @is_first %>
+      <%= link_to 'Previous',
+	  video_items_path(page: @params['page'].to_i - 1, page_size: (@params["page_size"] || 0).to_i),
+	  class: "button blue" %>
+      &nbsp; &nbsp; &nbsp;
+      <% end %>
+      
+      <% if @is_end %>
+      <%= link_to 'Next',
+	  video_items_path(page: @params['page'].to_i + 1, page_size: (@params["page_size"] || 10).to_i),
+	  class: "button blue" %>
+      <% end %>
+      <!-- <%= @params%> -->
+    </div>
+    
+  </div>
+</div>
