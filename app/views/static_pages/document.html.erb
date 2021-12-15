@@ -6,8 +6,29 @@
   <h1>StaticPages#document</h1>
   <hr />
 
-  <p>Find me in app/views/static_pages/document.html.erb</p>
+  <h2>Depolyment</h2>
+  You need Ruby installed. The version of my ruby is '2.7.4',
+  rails is '6.1.4.1', yarn is '1.22.17'.
+  
+  <pre>
+    <code>
+git clone https://github.com/totorowechat/danmu
+cd danmu
 
+bundle install
+yarn
+bundle exec rake assets:precompile
+bundle exec rake assets:clean
+RAILS_ENV=production SECRET_KEY_BASE=production_test_key rails db:migrate
+    </code>
+  </pre>
+
+Run in production mode.
+  <pre>
+    <code>
+RAILS_SERVE_STATIC_FILES=true RAILS_ENV=production SECRET_KEY_BASE=production_test_key rails s
+    </code>
+  </pre>
 </div>
 
 
