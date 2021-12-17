@@ -7,7 +7,7 @@ class VideoItemsController < ApplicationController
     page_size = (params["page_size"] || 10).to_i
     page = 0 if page < 0
     page_size = 100 if page_size > 100
-    @video_items = VideoItem.all.offset(page * page_size).limit(page_size)
+    @video_items = VideoItem.order(updated_at: :desc).offset(page * page_size).limit(page_size)
     @params = params
     @is_first = !page.zero?
     @is_end = !VideoItem.all.offset((page + 1) * page_size).limit(page_size).size.zero?
