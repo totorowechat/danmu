@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'danmaku#download'
   post '/danmaku/get_video_info', to: 'danmaku#get_video_info'
   get '/danmaku/play_on_mpv/:id', to: 'danmaku#play_on_mpv', as: 'danmaku_play_on_mpv'
+  get '/danmaku/download/:id', to: 'danmaku#download_danmaku', as: 'danmaku_download'
 
   resources :video_items
 

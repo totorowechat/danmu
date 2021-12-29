@@ -52,7 +52,10 @@
     <!--   <%= link_to 'Edit', edit_video_item_path(@video_item), class: 'button blue', style: 'width: 2rem;' %> -->
     <!--   <%= link_to 'Back', video_items_path, class: 'button gray', style: 'width: 2rem;' %> -->
     <!-- </div> -->
+    <div>
+      <%= link_to 'Play on mpv', danmaku_play_on_mpv_path(@video_item), class: 'button gray' %>
+      <%= link_to 'Download danmaku', danmaku_download_path(@video_item), class: 'button gray' %>
+    </div>
     
-    <%= link_to 'Play on mpv', danmaku_play_on_mpv_path(@video_item), class: 'button gray' %>
   </div>
 </div>

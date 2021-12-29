@@ -3,6 +3,8 @@
 
     <h1 class="">Play on mpv</h1>
     <hr />
+    <%= link_to 'Download danmaku', danmaku_download_path, class: 'button gray' %>
+    <br />
     <div style="align-self: flex-start; overflow-wrap: break-word; width: 100%;">
       mpv '<%= @video_url%>'
       --audio-file='<%= @audio_url%>'

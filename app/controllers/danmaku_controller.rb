@@ -2,11 +2,27 @@
 
 require 'json'
 require 'uri'
+require 'bilibili_ruby'
 
 class DanmakuController < ApplicationController
   before_action :set_video_item, only: %i[play_on_mpv]
 
   def download; end
+
+  def download_danmaku
+    video_item = VideoItem.find(params[:id])
+    bvid = /BV\w+/.match(video_item.url)
+
+    video = BilibiliRuby::Video.new bvid
+    page = BilibiliRuby::Page.new video,0
+    danmakus = page.danmakus
+    ass = BilibiliRuby::ASS.new danmakus
+    
+    send_data ass.render,
+              filename: "#{video_item.title}.ass",
+              type: "text/plain"
+
+  end
 
   def get_video_info
     bvid = if valid_url? params['query']
